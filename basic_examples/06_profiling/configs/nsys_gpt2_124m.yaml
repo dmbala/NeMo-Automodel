@@ -1,5 +1,5 @@
 # Same as benchmark_base but with nsys profiling turned on for rank 0, steps 8..12.
-# Run via: 06_profiling/run_nsys.sbatch
+# Run via: 06_profiling/run_nsys.slrm
 
 seed: 1234
 

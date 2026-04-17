@@ -55,7 +55,7 @@ sbatch --array=0-${max_idx} \
     --error="${OUT_DIR}/pair_%a.err" \
     --job-name="cb_pair_matrix" \
     --export=ALL,PAIRS_FILE="${PAIRS}",PAIR_OUT_DIR="${OUT_DIR}" \
-    "${CLUSTER_BENCH_ROOT}/nccl_tests/_pair_elem.sbatch"
+    "${CLUSTER_BENCH_ROOT}/nccl_tests/_pair_elem.slrm"
 
 echo
 echo "[pair_matrix] array job submitted. When it completes, collate with:"

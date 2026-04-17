@@ -22,7 +22,7 @@
 # Output: $RESULTS_ROOT/cluster_bench/scaling/<ts>/n<N>_g<G>_w<W>/
 #         contains benchmark_results.json + stdout.log per point.
 #
-# Submit with sufficient allocation: `sbatch --nodes=2 sbatch/scaling.sbatch`.
+# Submit with sufficient allocation: `sbatch --nodes=2 sbatch/scaling.slrm`.
 # Increase --nodes if you want more points (edit POINTS to cover them).
 
 set -euo pipefail

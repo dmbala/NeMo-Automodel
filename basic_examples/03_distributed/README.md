@@ -37,17 +37,17 @@ Tensor-parallel + pipeline-parallel configs are not included because custom `GPT
 
 ## Runs
 
-Requires FineWeb-500M data from Module 01 (`sbatch 01_data/run_fineweb.sbatch`).
+Requires FineWeb-500M data from Module 01 (`sbatch 01_data/run_fineweb.slrm`).
 
 ```bash
 # Single node, FSDP2 dp=4 (default config):
-sbatch 03_distributed/run_fsdp2_single.sbatch
+sbatch 03_distributed/run_fsdp2_single.slrm
 
 # Same job but exercise async DCP + HF consolidation:
-CONFIG=ckpt_async_consolidated.yaml sbatch 03_distributed/run_fsdp2_single.sbatch
+CONFIG=ckpt_async_consolidated.yaml sbatch 03_distributed/run_fsdp2_single.slrm
 
 # 2 nodes, HSDP (2×4):
-sbatch 03_distributed/run_hsdp_multinode.sbatch
+sbatch 03_distributed/run_hsdp_multinode.slrm
 ```
 
 ## Checkpoint format (DCP)

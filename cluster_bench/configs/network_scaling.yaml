@@ -2,7 +2,7 @@
 # --nproc-per-node and --nnodes. Intra-node (1→4 GPU) isolates NVLink/NVSwitch;
 # inter-node (4→16 GPU) isolates IB/RoCE.
 #
-# Invoked by `sbatch/scaling.sbatch` which runs one benchmark per (nodes,gpus)
+# Invoked by `sbatch/scaling.slrm` which runs one benchmark per (nodes,gpus)
 # point and appends to history.jsonl.
 
 seed: 1234

@@ -2,7 +2,7 @@
 # Qwen3-1.7B model on a single GPU. Identical across nodes → MFU distribution
 # across the cluster reveals thermal / power / NVLink / driver stragglers.
 #
-# Invoked by `sbatch/per_node.sbatch` as a Slurm array, one rank per node.
+# Invoked by `sbatch/per_node.slrm` as a Slurm array, one rank per node.
 # Emits `benchmark_results.json` that scrape_metrics.py folds into history.jsonl.
 
 seed: 1234

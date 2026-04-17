@@ -44,10 +44,10 @@ A `kd_ratio: 0.0` run degenerates to plain SFT (Module 04 Track A); `1.0` ignore
 
 ```bash
 # Full-finetune KD (default):
-sbatch 13_kd/kd_run.sbatch
+sbatch 13_kd/kd_run.slrm
 
 # LoRA-KD variant:
-CONFIG=kd_qwen3_lora_student0p6b.yaml sbatch 13_kd/kd_run.sbatch
+CONFIG=kd_qwen3_lora_student0p6b.yaml sbatch 13_kd/kd_run.slrm
 ```
 
 Under the hood:
@@ -84,7 +84,7 @@ ls $CKPT_ROOT/kd_kd_qwen3_student0p6b_teacher1p7b/epoch_0_step_299/model/consoli
 
 # 4. Judge it (Module 07):
 MODEL=$CKPT_ROOT/kd_.../epoch_0_step_299/model/consolidated \
-    sbatch 07_eval/run_judge.sbatch
+    sbatch 07_eval/run_judge.slrm
 ```
 
 ## Gotchas

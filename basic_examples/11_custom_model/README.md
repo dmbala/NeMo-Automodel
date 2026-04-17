@@ -22,7 +22,7 @@ Wrapping the module in a `PreTrainedModel` buys three things:
 ├── custom_model.py                  # RoPEGPTConfig + RoPEGPTForCausalLM, registered at import time
 ├── configs/
 │   └── custom_rope_shakespeare.yaml # from_config → RoPEGPTConfig
-├── custom_run.sbatch                # exports PYTHONPATH, reuses 02_pretrain/pretrain.sh
+├── custom_run.slrm                # exports PYTHONPATH, reuses 02_pretrain/pretrain.sh
 └── README.md
 ```
 
@@ -31,7 +31,7 @@ The custom model is a minimal **RoPE-GPT**: rotary positional embeddings, tied L
 ## Run it
 
 ```bash
-sbatch 11_custom_model/custom_run.sbatch
+sbatch 11_custom_model/custom_run.slrm
 ```
 
 The sbatch:

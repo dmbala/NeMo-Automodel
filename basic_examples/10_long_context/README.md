@@ -21,8 +21,8 @@ Both use the repo's `mock.build_unpacked_dataset` so you don't need pretokenized
 ## Run
 
 ```bash
-MODE=sp sbatch 10_long_context/long_ctx.sbatch   # SP variant
-MODE=cp sbatch 10_long_context/long_ctx.sbatch   # CP variant
+MODE=sp sbatch 10_long_context/long_ctx.slrm   # SP variant
+MODE=cp sbatch 10_long_context/long_ctx.slrm   # CP variant
 ```
 
 Both allocate `--nodes=1 --ntasks-per-node=4 --gres=gpu:4`.

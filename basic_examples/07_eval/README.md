@@ -20,7 +20,7 @@ This creates `07_eval/overlay.img` (4 GB writable overlay) and pip-installs `lm-
 ## lm-eval-harness
 
 ```bash
-sbatch 07_eval/run_lm_eval.sbatch
+sbatch 07_eval/run_lm_eval.slrm
 # Customize:  CKPT=<dir> TASKS=hellaswag,arc_easy,mmlu BATCH_SIZE=16 sbatch ...
 ```
 
@@ -60,7 +60,7 @@ Three stages:
 
 3. **Judge** — score with a larger reference model:
    ```bash
-   sbatch 07_eval/run_judge.sbatch          # uses the latest Track B ckpt
+   sbatch 07_eval/run_judge.slrm          # uses the latest Track B ckpt
    ```
 
 ### Judge backends

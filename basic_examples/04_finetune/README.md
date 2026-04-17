@@ -14,7 +14,7 @@ Both tracks route through the same `train_ft.py` recipe — the CLI verb (`finet
 Requires Module 02 tiny pretrain to have completed:
 
 ```bash
-sbatch 04_finetune/finetune_trackA.sbatch
+sbatch 04_finetune/finetune_trackA.slrm
 ```
 
 The sbatch script discovers the latest `epoch_*_step_*/model/consolidated/` dir under `$CKPT_ROOT/tiny_gpt2`, passes it as `--model.pretrained_model_name_or_path=...`, and SFTs on 2k SQuAD examples. Output: `$CKPT_ROOT/tiny_sft/epoch_0_step_<N>/model/consolidated/`.
@@ -24,14 +24,14 @@ The sbatch script discovers the latest `epoch_*_step_*/model/consolidated/` dir 
 Ungated default (Qwen3-0.6B):
 
 ```bash
-sbatch 04_finetune/finetune_trackB.sbatch
+sbatch 04_finetune/finetune_trackB.slrm
 ```
 
 Gated alternative (Llama-3.2-1B) — needs a HF token:
 
 ```bash
 export HF_TOKEN=hf_...  # paste your token
-CONFIG=llama32_1b_lora_squad.yaml sbatch 04_finetune/finetune_trackB.sbatch
+CONFIG=llama32_1b_lora_squad.yaml sbatch 04_finetune/finetune_trackB.slrm
 ```
 
 ### Pre-warming the HF cache (optional)

@@ -28,7 +28,7 @@ Consolidated ckpt loads back as `Mamba2ForCausalLM` via `AutoModelForCausalLM.fr
 ## Run
 
 ```bash
-sbatch 16_mamba/mamba_run.sbatch                 # 1 GPU, ~5 min
+sbatch 16_mamba/mamba_run.slrm                 # 1 GPU, ~5 min
 ```
 
 Under the hood: same `02_pretrain/pretrain.sh` wrapper, different config.

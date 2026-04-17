@@ -27,15 +27,15 @@ The installer pulls vLLM 0.11.x (`--no-deps` to avoid downgrading torch) plus th
 
 ```bash
 # Smoke: serve Qwen3-0.6B + fire a prompt, then shut down.
-sbatch 12_vllm_serve/serve.sbatch
+sbatch 12_vllm_serve/serve.slrm
 
 # Serve your LoRA-merged checkpoint from Module 04:
 MODEL=$CKPT_ROOT/trackB_qwen3_0p6b_lora_squad/epoch_0_step_299/model/consolidated \
-    sbatch 12_vllm_serve/serve.sbatch
+    sbatch 12_vllm_serve/serve.slrm
 
 # Custom model from Module 11 (needs the RoPE-GPT config class registered — see gotchas):
 MODEL=$CKPT_ROOT/custom_rope_gpt/epoch_0_step_499/model/consolidated \
-    sbatch 12_vllm_serve/serve.sbatch
+    sbatch 12_vllm_serve/serve.slrm
 ```
 
 The sbatch starts `vllm serve`, waits up to 120 s for `/v1/models` to 200-OK, fires a single client query via `client_example.py`, then shuts down.

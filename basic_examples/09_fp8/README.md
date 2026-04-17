@@ -45,7 +45,7 @@ Start with `tensorwise`; escalate if you see loss divergence vs a bf16 run.
 ## Run
 
 ```bash
-sbatch 09_fp8/fp8_run.sbatch
+sbatch 09_fp8/fp8_run.slrm
 ```
 
 Under the hood:

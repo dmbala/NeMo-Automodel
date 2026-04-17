@@ -12,7 +12,7 @@ Trains a GPT-2-style causal LM from random init using Automodel's `train_ft.py` 
 ## Run — tiny path (after Module 01 tiny)
 
 ```bash
-sbatch 02_pretrain/pretrain_tiny.sbatch
+sbatch 02_pretrain/pretrain_tiny.slrm
 # → logs/ws02_pretrain_tiny.<jobid>.out
 # → $CKPT_ROOT/tiny_gpt2/
 ```
@@ -29,8 +29,8 @@ shared/launch.sh automodel -c configs/tiny_gpt2_shakespeare.yaml pretrain llm \
 ## Run — FineWeb-500M path (requires Module 01 fineweb step)
 
 ```bash
-sbatch 01_data/run_fineweb.sbatch      # once, ~1 hr
-sbatch 02_pretrain/pretrain_124m.sbatch
+sbatch 01_data/run_fineweb.slrm      # once, ~1 hr
+sbatch 02_pretrain/pretrain_124m.slrm
 ```
 
 Edit `configs/gpt2_124m_fineweb.yaml` to adjust `max_steps`, `local_batch_size`, or use `activation_checkpointing` as needed for your node.

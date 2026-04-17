@@ -86,13 +86,13 @@ If you ever need to rebuild the fix, see `shared/user_overlay.sh` and the `nemo-
 cd /n/netscratch/kempner_dev/Lab/$USER/Agent/nemo/workshop
 
 # 1. Smoke test (1 GPU, ~1 min)
-sbatch 00_setup/smoke_test.sbatch
+sbatch 00_setup/smoke_test.slrm
 
 # 2. Prepare tiny data (login node, ~30 s)
 shared/launch.sh python 01_data/tiny_shakespeare.py
 
 # 3. Tiny pretrain (1 GPU, ~5 min)
-sbatch 02_pretrain/pretrain_tiny.sbatch
+sbatch 02_pretrain/pretrain_tiny.slrm
 
 # ... continue through modules 03–07.
 ```

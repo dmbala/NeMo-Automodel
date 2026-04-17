@@ -13,7 +13,7 @@ Automodel's second CLI domain is `vlm`. The recipe `/opt/Automodel/nemo_automode
 ├── configs/
 │   └── gemma3_vl_4b_cord_lora.yaml   # Gemma3-VL-4B LoRA on CORD-V2 (receipt parsing)
 ├── vlm_finetune.sh                    # launches automodel ... finetune vlm
-├── vlm_run.sbatch
+├── vlm_run.slrm
 └── README.md
 ```
 
@@ -22,7 +22,7 @@ The default config finetunes **Gemma3-VL-4B** (ungated, 4B params incl. ViT) on 
 ## Run
 
 ```bash
-sbatch 15_vlm/vlm_run.sbatch
+sbatch 15_vlm/vlm_run.slrm
 ```
 
 Under the hood:

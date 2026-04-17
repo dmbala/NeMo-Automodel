@@ -17,9 +17,9 @@ Extends Module 03's distributed checkpointing story with three concrete fault-to
 
 | Demo | sbatch | What it shows |
 |---|---|---|
-| **Kill & resume** | `kill_and_resume.sbatch` | Train tiny GPT-2 until the first checkpoint lands, SIGKILL the whole process group, relaunch with same config → `restore_from: LATEST` picks up from the last `ckpt_every_steps` boundary. Smoke-verified end-to-end. |
-| **DCP reshard** | `reshard_demo.sbatch` | Save at `dp_size=4` on 4 GPUs. Resume same checkpoint at `dp_size=2` on 2 GPUs. DCP stitches shards on load and re-shards to the new mesh. |
-| **Torch elastic** | `elastic_restart.sbatch` | Launch with `torchrun --max-restarts=3`; `chaos_monkey.py` kills rank 1 after 45 s. Elastic respawns the group, recipe's `restore_from: LATEST` restores state, training continues. |
+| **Kill & resume** | `kill_and_resume.slrm` | Train tiny GPT-2 until the first checkpoint lands, SIGKILL the whole process group, relaunch with same config → `restore_from: LATEST` picks up from the last `ckpt_every_steps` boundary. Smoke-verified end-to-end. |
+| **DCP reshard** | `reshard_demo.slrm` | Save at `dp_size=4` on 4 GPUs. Resume same checkpoint at `dp_size=2` on 2 GPUs. DCP stitches shards on load and re-shards to the new mesh. |
+| **Torch elastic** | `elastic_restart.slrm` | Launch with `torchrun --max-restarts=3`; `chaos_monkey.py` kills rank 1 after 45 s. Elastic respawns the group, recipe's `restore_from: LATEST` restores state, training continues. |
 
 ## Requires
 
@@ -29,13 +29,13 @@ Extends Module 03's distributed checkpointing story with three concrete fault-to
 
 ```bash
 # 1-GPU kill-and-resume (fastest, most instructive):
-sbatch 08_fault_tolerance/kill_and_resume.sbatch
+sbatch 08_fault_tolerance/kill_and_resume.slrm
 
 # 4-GPU reshardable load:
-sbatch 08_fault_tolerance/reshard_demo.sbatch
+sbatch 08_fault_tolerance/reshard_demo.slrm
 
 # 4-GPU elastic restart with injected crash:
-sbatch 08_fault_tolerance/elastic_restart.sbatch
+sbatch 08_fault_tolerance/elastic_restart.slrm
 ```
 
 You can also run `kill_and_resume.sh` interactively on an existing GPU allocation:
@@ -100,7 +100,7 @@ torchrun: [ERROR] worker pid 5678 exited with code SIGKILL, restarting group
 - **DCP reshard only works for the model/optimizer shards** — the dataloader state is pickled per rank. Resuming at a different world size resets the data cursor. For a rigorous demo, set `dataloader.shuffle: false` so the starting position is deterministic.
 - `chaos_monkey.py` uses `SIGKILL` (simulates a hard crash / preemption via `scancel --signal=KILL`). For `SIGTERM` (clean preemption), you'd want `DistributedSignalHandler` wired into the recipe — see `signal_demo.md` for the how and why.
 - Torch elastic respawns within a **single Slurm allocation**. If the whole allocation dies (wall-time, node failure), Slurm's own requeue (`--requeue` + `sbatch --requeue`) plus `restore_from: LATEST` is the recovery path.
-- `--rdzv-endpoint=$MASTER_ADDR:$MASTER_PORT` on a single-node job points at the local host. For multi-node elastic, the rendezvous endpoint must be the job's first node and all nodes must agree (use `scontrol show hostnames | head -1`). Covered in Module 03's `run_hsdp_multinode.sbatch`.
+- `--rdzv-endpoint=$MASTER_ADDR:$MASTER_PORT` on a single-node job points at the local host. For multi-node elastic, the rendezvous endpoint must be the job's first node and all nodes must agree (use `scontrol show hostnames | head -1`). Covered in Module 03's `run_hsdp_multinode.slrm`.
 
 ## Related reading
 

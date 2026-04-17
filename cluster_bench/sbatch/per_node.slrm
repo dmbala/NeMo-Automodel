@@ -16,11 +16,11 @@
 #
 #   NODES=(holygpu8a10301 holygpu8a10302 holygpu8a10303)
 #   for n in "${NODES[@]}"; do
-#     sbatch --nodelist=$n cluster_bench/sbatch/per_node.sbatch
+#     sbatch --nodelist=$n cluster_bench/sbatch/per_node.slrm
 #   done
 #
 # Or as a pure array over any available node:
-#   sbatch --array=0-9 cluster_bench/sbatch/per_node.sbatch
+#   sbatch --array=0-9 cluster_bench/sbatch/per_node.slrm
 #
 # Each run produces $RESULTS_ROOT/cluster_bench/per_node/<host>_<ts>/ with:
 #   - benchmark_results.json   (MFU, TFLOPs/GPU, avg_iter_time_seconds)

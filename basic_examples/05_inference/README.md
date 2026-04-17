@@ -13,7 +13,7 @@ Automodel is not involved at inference time — the checkpoints it writes are pl
 ## Single-prompt generation
 
 ```bash
-sbatch 05_inference/inference.sbatch    # uses the latest tiny_sft/ checkpoint
+sbatch 05_inference/inference.slrm    # uses the latest tiny_sft/ checkpoint
 
 # Or directly:
 shared/launch.sh python 05_inference/generate.py \

@@ -1,6 +1,6 @@
 # Storage-tier throughput benchmark. Runs a short Qwen3-1.7B training with
 # aggressive ckpt_every_steps so we get multiple DCP save events per run.
-# `sbatch/storage.sbatch` rotates checkpoint.checkpoint_dir through the tiers
+# `sbatch/storage.slrm` rotates checkpoint.checkpoint_dir through the tiers
 # (tmp / netscratch / holylfs) and records save timings per tier.
 
 seed: 1234

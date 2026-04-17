@@ -19,7 +19,7 @@ Downloads Tiny-Shakespeare (~1 MB), BPE-tokenizes with GPT-2, writes a `uint16` 
 ## FineWeb path (cluster-scale, ~20–60 min on 32 CPUs)
 
 ```bash
-sbatch 01_data/run_fineweb.sbatch
+sbatch 01_data/run_fineweb.slrm
 # or directly: 01_data/fineweb_10bt.sh $DATA_ROOT/fineweb_500M 500M
 ```
 

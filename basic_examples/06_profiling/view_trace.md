@@ -2,7 +2,7 @@
 
 ## nsys traces
 
-`run_nsys.sbatch` produces `$RESULTS_ROOT/nsys/trace.nsys-rep` on the cluster.
+`run_nsys.slrm` produces `$RESULTS_ROOT/nsys/trace.nsys-rep` on the cluster.
 
 ### Option 1 — summarize on the cluster
 

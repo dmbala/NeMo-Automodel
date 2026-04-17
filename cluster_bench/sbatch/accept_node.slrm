@@ -15,7 +15,7 @@
 # node. Emits a single verdict.json + a console PASS / WARN / FAIL.
 #
 # Usage:
-#   sbatch --nodelist=<node> cluster_bench/sbatch/accept_node.sbatch
+#   sbatch --nodelist=<node> cluster_bench/sbatch/accept_node.slrm
 #
 # Green-light thresholds (override via env):
 #   ACCEPT_MFU_FLOOR=40          # MFU%, absolute minimum

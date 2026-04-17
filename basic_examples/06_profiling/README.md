@@ -9,7 +9,7 @@ Three pieces:
 ## Nsys profiling
 
 ```bash
-sbatch 06_profiling/run_nsys.sbatch
+sbatch 06_profiling/run_nsys.slrm
 ```
 
 The `configs/nsys_gpt2_124m.yaml` sets:
@@ -41,7 +41,7 @@ This script is *deliberately not* a patch to `train_ft.py` — it's a sidecar th
 ## Autotuner grid sweep
 
 ```bash
-sbatch 06_profiling/sweep.sbatch          # 8 points × ~1 min each
+sbatch 06_profiling/sweep.slrm          # 8 points × ~1 min each
 # or directly:
 shared/launch.sh python 06_profiling/sweep.py \
     --base 06_profiling/configs/benchmark_base.yaml \
@@ -72,7 +72,7 @@ After the sweep, `report.py` ranks runs by MFU% and writes `summary.md`:
 - For world_size=4: `--dp-tp 4x1,2x2,1x4`
 - For world_size=8 (multi-node): bump to `--dp-tp 8x1,4x2,2x4` and use `--nodes=2 --ntasks-per-node=4`.
 
-For bigger sweeps, wrap each grid row in a Slurm array job: emit the overrides once, then `sbatch --array=0-N sweep_one.sbatch`.
+For bigger sweeps, wrap each grid row in a Slurm array job: emit the overrides once, then `sbatch --array=0-N sweep_one.slrm`.
 
 ## Gotchas
 

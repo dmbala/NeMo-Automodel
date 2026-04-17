@@ -32,14 +32,14 @@ scale sequence length with CP.
 
 ```bash
 # Pick a step by name:
-sbatch --export=ALL,STEP=step3 14_scaling/ladder.sbatch
+sbatch --export=ALL,STEP=step3 14_scaling/ladder.slrm
 
 # Or let the sbatch auto-select based on world size (defaults to --nodes=1 --gres=gpu:4):
-sbatch 14_scaling/ladder.sbatch
+sbatch 14_scaling/ladder.slrm
 
 # Multi-node steps (override sbatch directives):
-sbatch --nodes=2 --export=ALL,STEP=step6 14_scaling/ladder.sbatch
-sbatch --nodes=8 --ntasks-per-node=8 --gres=gpu:8 --export=ALL,STEP=step7 14_scaling/ladder.sbatch
+sbatch --nodes=2 --export=ALL,STEP=step6 14_scaling/ladder.slrm
+sbatch --nodes=8 --ntasks-per-node=8 --gres=gpu:8 --export=ALL,STEP=step7 14_scaling/ladder.slrm
 ```
 
 Each run writes `$RESULTS_ROOT/scaling/<step>/benchmark_results.json` with:

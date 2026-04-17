@@ -29,10 +29,10 @@ bash 17_diffusion/bootstrap_main.sh         # git clone --depth=1 of main → 17
 
 ```bash
 # Wan2.2-T2V-A14B, 4×H100 TP=4, rectified-flow sampler, ~5-10 min per 3-second clip:
-sbatch 17_diffusion/generate.sbatch
+sbatch 17_diffusion/generate.slrm
 
-PROMPT="Neon cyberpunk street market at night." NUM_STEPS=12 sbatch 17_diffusion/generate.sbatch
-MODEL=Wan-AI/Wan2.1-T2V-1.3B-Diffusers NUM_STEPS=25 sbatch 17_diffusion/generate.sbatch
+PROMPT="Neon cyberpunk street market at night." NUM_STEPS=12 sbatch 17_diffusion/generate.slrm
+MODEL=Wan-AI/Wan2.1-T2V-1.3B-Diffusers NUM_STEPS=25 sbatch 17_diffusion/generate.slrm
 ```
 
 `generate.py` loads any `diffusers.DiffusionPipeline`, shards the DiT components (`transformer`, `transformer_2` for Wan2.2) across the torchrun world, and produces a video.
@@ -41,13 +41,13 @@ MODEL=Wan-AI/Wan2.1-T2V-1.3B-Diffusers NUM_STEPS=25 sbatch 17_diffusion/generate
 
 ```bash
 # Default: LoRA on Wan2.1-T2V with flow matching, 4 GPUs:
-sbatch 17_diffusion/finetune.sbatch
+sbatch 17_diffusion/finetune.slrm
 
 # Flux-T2I LoRA (image, not video):
-CONFIG=finetune_flux_lora.yaml sbatch 17_diffusion/finetune.sbatch
+CONFIG=finetune_flux_lora.yaml sbatch 17_diffusion/finetune.slrm
 
 # Multinode variant (set --nodes):
-CONFIG=finetune_wan2_1_t2v_multinode.yaml sbatch --nodes=2 17_diffusion/finetune.sbatch
+CONFIG=finetune_wan2_1_t2v_multinode.yaml sbatch --nodes=2 17_diffusion/finetune.slrm
 ```
 
 LoRA adapters land under `checkpoint.checkpoint_dir/<step>/adapter_model.safetensors`.
@@ -56,10 +56,10 @@ LoRA adapters land under `checkpoint.checkpoint_dir/<step>/adapter_model.safeten
 
 ```bash
 # Flux-T2I pretraining — defaults assume 8 GPUs on one node:
-CONFIG=pretrain_flux_flow.yaml sbatch 17_diffusion/pretrain.sbatch
+CONFIG=pretrain_flux_flow.yaml sbatch 17_diffusion/pretrain.slrm
 
 # Wan2.1 T2V from-scratch pretraining (default):
-sbatch 17_diffusion/pretrain.sbatch
+sbatch 17_diffusion/pretrain.slrm
 ```
 
 ## The flow-matching YAML surface

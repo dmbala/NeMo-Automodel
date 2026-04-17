@@ -12,11 +12,11 @@
 #SBATCH --error=logs/%x.%j.err
 
 # Auto-pick ladder step based on world size, or override via env:
-#   STEP=step3 sbatch 14_scaling/ladder.sbatch
+#   STEP=step3 sbatch 14_scaling/ladder.slrm
 #
 # For multi-node steps (step6 = 2 nodes, step7 = 8 nodes), override the SBATCH
 # directives. Use `--export=ALL,STEP=...` so SLURM/user env is preserved:
-#   sbatch --nodes=2 --export=ALL,STEP=step6 14_scaling/ladder.sbatch
+#   sbatch --nodes=2 --export=ALL,STEP=step6 14_scaling/ladder.slrm
 
 set -euo pipefail
 mkdir -p logs

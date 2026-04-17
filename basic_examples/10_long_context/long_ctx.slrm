@@ -12,8 +12,8 @@
 #SBATCH --error=logs/%x.%j.err
 
 # Run either the SP or CP variant. Override via env:
-#   MODE=sp  sbatch 10_long_context/long_ctx.sbatch   # tp=2, SP on, 8k seq_len
-#   MODE=cp  sbatch 10_long_context/long_ctx.sbatch   # cp=2, 16k seq_len
+#   MODE=sp  sbatch 10_long_context/long_ctx.slrm   # tp=2, SP on, 8k seq_len
+#   MODE=cp  sbatch 10_long_context/long_ctx.slrm   # cp=2, 16k seq_len
 
 set -euo pipefail
 mkdir -p logs

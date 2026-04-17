@@ -6,7 +6,7 @@ Confirms the container works on this cluster and surfaces the knobs the rest of 
 
 ```bash
 # One-shot on a GPU node:
-sbatch 00_setup/smoke_test.sbatch
+sbatch 00_setup/smoke_test.slrm
 
 # Or interactively (needs a GPU allocation):
 salloc -p kempner_dev --gres=gpu:1 --mem=32G --time=00:10:00
