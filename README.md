@@ -1,4 +1,4 @@
-# nemo_autotune
+# NeMo Automodel
 
 Training examples and cluster diagnostics for Kempner-style H100/H200 Slurm clusters, built on the NeMo-Automodel Singularity image. Two top-level trees: [`basic_examples/`](basic_examples/) (hands-on training modules) and [`cluster_bench/`](cluster_bench/) (HPC health / acceptance / regression suite).
 
